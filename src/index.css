@@ -1,13 +1,203 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.todos {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.todos h1 {
+  font-size: 60px;
+  color: #f2dcdf;
+  margin: 0;
+}
+
+.todos-body {
+  box-shadow: 3px 3px 8px 2px #ccc;
+}
+
+input[type='text'] {
+  padding: 15px;
+  width: 80%;
+  outline: none;
+
+  font-size: 20px;
+  color: #9f9d9e;
+}
+
+.todo-input {
+  border: none;
+}
+
+.todo-edit-input {
+  border: 1px solid #ccc;
+}
+
+input[type='text']::placeholder {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+
+  color: #f6f4f6;
+}
+
+.todo {
+  font-size: 20px;
+  color: #9f9d9e;
+}
+
+.todo-box {
+  width: 90%;
+  margin: 5px auto;
+  transition: all 0.2s;
+}
+
+.todo-box input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+.todo-delete {
+  font-size: 20px;
+  color: #f2dcdf;
+  opacity: 0;
+}
+
+.todo-box:hover .todo-delete {
+  opacity: 1;
+}
+
+.actions {
+  padding: 20px;
+  color: #c2c4c5;
+
+  position: relative;
+}
+
+.actions::before {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  width: 98%;
+  height: 10%;
+  bottom: -8px;
+  left: 1%;
+  border: 1px solid #eee;
+}
+
+.actions::after {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  width: 96%;
+  height: 10%;
+  bottom: -15px;
+  left: 2%;
+  border: 1px solid #eee;
+}
+
+.active-btn {
+  border: 1px solid #eee;
+}
+
+.action1,
+.action2,
+.action3 {
+  display: inline-block;
+}
+
+.action1 {
+  width: 20%;
+}
+
+.action3 {
+  width: 30%;
+}
+
+.action2 {
+  width: 50%;
+}
+
+.action3 button:hover {
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-jc-sb {
+  justify-content: space-between;
+}
+
+button {
+  color: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+hr {
+  border: 1px solid #fefcfe;
+}
+
+.checkbox-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 17px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #fff;
+  border: 1px solid #eee;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #bce7de;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
