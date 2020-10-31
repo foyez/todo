@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Todo = ({
   todo,
   editId,
@@ -7,45 +5,47 @@ export const Todo = ({
   handleEditTodo,
   handleTodoCompleted,
   handleDeleteTodo,
-  handleSubmitEditTodo,
-}) => (
-  <div className="todo">
-    {editId && editId === todo.id ? (
-      <>
-        <form onSubmit={(e) => handleSubmitEditTodo(e, todo.id)}>
-          <input
-            className="todo-edit-input"
-            type="text"
-            defaultValue={todo.body}
-            onChange={handleChange}
-          />
-        </form>
-      </>
-    ) : (
-      <div className="todo-box flex flex-jc-sb">
-        <div>
-          <label className="checkbox-container">
+  handleEditTodoSubmit,
+}) => {
+  return (
+    <div className="todo">
+      {editId && editId === todo.id ? (
+        <>
+          <form onSubmit={(e) => handleEditTodoSubmit(e, todo.id)}>
             <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={(e) => handleTodoCompleted(e, todo.id)}
+              className="todo-edit-input"
+              type="text"
+              defaultValue={todo.body}
+              onChange={handleChange}
             />
-            <span className="checkmark"></span>
-          </label>
-          <span
-            style={todo.completed ? { textDecoration: 'line-through' } : null}
-            onClick={() => handleEditTodo(todo.id)}
+          </form>
+        </>
+      ) : (
+        <div className="todo-box flex flex-jc-sb">
+          <div>
+            <label className="checkbox-container">
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={(e) => handleTodoCompleted(e, todo.id)}
+              />
+              <span className="checkmark"></span>
+            </label>
+            <span
+              style={todo.completed ? { textDecoration: 'line-through' } : null}
+              onClick={() => handleEditTodo(todo.id)}
+            >
+              {todo.body}
+            </span>
+          </div>
+          <button
+            className="todo-delete"
+            onClick={() => handleDeleteTodo(todo.id)}
           >
-            {todo.body}
-          </span>
+            x
+          </button>
         </div>
-        <button
-          className="todo-delete"
-          onClick={() => handleDeleteTodo(todo.id)}
-        >
-          x
-        </button>
-      </div>
-    )}
-  </div>
-)
+      )}
+    </div>
+  )
+}
